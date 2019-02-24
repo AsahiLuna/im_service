@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+aliyun:
+  tablestore:
+    endpoint: "<your endpoint>"
+    AccessKeyID: "<your AccessKeyID>"
+    AccessKeySecret: "<your AccessKeySecret>"
+    instanceName: "<your instanceName>"
+
+im.storeTable: "im_demo_timeline_StoreTable"
+im.syncTable: "im_demo_timeline_SyncTable"
+
+im.userTable: "im_demo_timeline_UserTable"
+im.groupTable: "im_demo_timeline_GroupTable"
+im.groupUserTable: "im_demo_timeline_GroupUserTable"

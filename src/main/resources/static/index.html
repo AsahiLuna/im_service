@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>IM</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="app">
+    <!-- Modal -->
+    <div class="modal fade" id="initModal" tabindex="-1" role="dialog" aria-labelledby=initModalLabel"
+         data-backdrop="false">
+        <div class="modal-dialog" role="document" style="width: 50%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="initModalLabel">选择人员</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" v-show="newUserStatus=='init'">
+                        <div class="col-sm-6 col-sm-offset-3 text-center">
+                            <button type="button" class="btn btn-success" v-on:click="newUserStatus='old';"
+                                    style="margin-right: 20%">
+                                老用户
+                            </button>
+                            <button type="button" class="btn btn-info" v-on:click="newUserStatus='new';">新建用户</button>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-6 col-sm-offset-3" v-show="newUserStatus=='new'">
+                            <h3>请输入用户信息进行注册</h3>
+                            <form>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">用户名</span>
+                                    <input type="text" class="form-control" placeholder="你的登录用户名"
+                                           v-model="userName">
+                                </div>
+                                <br>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">性别</span>
+                                    <select v-model="selectedGender" class="form-control">
+                                        <option disabled value="">请选择</option>
+                                        <option>男</option>
+                                        <option>女</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">个性签名</span>
+                                    <input type="text" class="form-control" v-model="userSign">
+                                </div>
+                                <br>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">年龄</span>
+                                    <input type="number" class="form-control" v-model="userAge">
+                                </div>
+                                <br>
+                            </form>
+                            <div class="text-center" style="margin-top: 20px">
+                                <button type="button" class="btn btn-primary" v-on:click="userRegister()">确定输入</button>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3" v-show="newUserStatus=='old'">
+                            <h3>输入你的用户名进行登录</h3>
+                            <form class="bs-example bs-example-form" role="form">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">用户名</span>
+                                    <input type="text" class="form-control" placeholder="你的登录用户名" v-model="userName">
+                                </div>
+                            </form>
+                            <div class="text-center" style="margin-top: 20px">
+                                <button type="button" class="btn btn-primary" v-on:click="userLogin()">确定输入</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="groupModal" tabindex="-1" role="dialog" aria-labelledby="groupModalLabel"
+         data-backdrop="false">
+        <div class="modal-dialog" role="document" style="width: 70%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="groupModalLabel">群聊管理</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" v-show="groupStatus=='init'">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <button type="button" class="btn btn-info" v-on:click="groupStatus='create'">创建新群
+                            </button>
+                            <button type="button" class="btn btn-info" v-on:click="groupStatus='join'">加入群
+                            </button>
+                            <button type="button" class="btn btn-info" v-on:click="groupStatus='leave'">退出群</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3" v-show="groupStatus==='create'">
+                            <h3>输入您想创建的群的元数据：</h3>
+                            <h5>输入已经存在的群，会覆盖原来的元数据信息</h5>
+                            <form>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">群名</span>
+                                    <input type="text" class="form-control" placeholder="你的群名"
+                                           v-model="newGroupName">
+                                </div>
+                                <br>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">群类别</span>
+                                    <input type="text" class="form-control" placeholder="你的群标签类别"
+                                           v-model="newGroupType">
+                                </div>
+                                <br>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">群描述</span>
+                                    <input type="text" class="form-control" placeholder="输入你的群的简介"
+                                           v-model="newGroupDescription">
+                                </div>
+                                <br>
+                            </form>
+                            <div class="text-center" style="margin-top: 20px">
+                                <button type="button" class="btn btn-primary" v-on:click="createGroup()">确定创建
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3" v-show="groupStatus==='join'">
+                            <h3>输入您想加入的群名</h3>
+                            <form>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">群名</span>
+                                    <input type="text" class="form-control" placeholder="已经存在的群名"
+                                           v-model="joinGroupName">
+                                </div>
+                                <br>
+                            </form>
+                            <div class="text-center" style="margin-top: 20px">
+                                <button type="button" class="btn btn-primary" v-on:click="joinGroup()">确定加入
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3" v-show="groupStatus==='leave'">
+                            <h3>输入您想退出的群名</h3>
+                            <form>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">群名</span>
+                                    <input type="text" class="form-control" placeholder="要退出的群名"
+                                           v-model="leaveGroupName">
+                                </div>
+                                <br>
+                            </form>
+                            <div class="text-center" style="margin-top: 20px">
+                                <button type="button" class="btn btn-danger" v-on:click="leaveGroup()">确定退出群
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                            v-on:click="groupStatus='init';groupSearchData={}">关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="infoModalLabel" v-text="notifyMessage"></h4>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" v-show="newUserStatus=='initDone'">
+        <div class="page-header">
+            <h1><span v-text="userName"></span>
+                <small><span v-text="userSign"></span></small>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-4" style="margin-top: 10%">
+                <form>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" v-text="receiveLabelType"></span>
+                        <input type="text" class="form-control" v-model="to">
+                    </div>
+                    <br>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">收信人类型</span>
+                        <select v-model="selectedMessageType" class="form-control" v-on:change="toggleSendBtnType()">
+                            <option disabled value="">请选择</option>
+                            <option value="group">群聊</option>
+                            <option value="onePeople">单人聊天</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">内容</span>
+                        <input type="text" class="form-control" v-model="message">
+                    </div>
+                    <br>
+                </form>
+                <div class="text-center" style="margin-top: 20px">
+                    <button type="button"
+                            v-bind:class="{ 'btn-primary': selectedMessageType==='onePeople', 'btn-danger': selectedMessageType==='group' }"
+                            class="btn  btn-lg" v-on:click="sendMessage()" v-text="sendBtnType"></button>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="panel panel-success" style="height:600px">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">收信箱</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li v-for="sd in syncData">
+                                <span style="color: #2e6da4" v-text="sd.attributes.time"></span>
+                                <span style="color: #8a6d3b;" v-text="sd.attributes.from"></span>
+                                <span v-show="sd.attributes.messageType=='group'">在群【<span style="color: #5bc0de;"
+                                                                                v-text="sd.attributes.to"></span>】中说:</span>
+                                <span v-show="sd.attributes.messageType!='group'">单聊给你说:</span>
+                                <span style="color: black;" v-text="sd.content"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-sm-offset-1">
+                <button type="button" class="btn btn-warning btn-lg" v-on:click="$('#groupModal').modal('show')">群搜索
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/my.js"></script>
+</body>
+</html>
