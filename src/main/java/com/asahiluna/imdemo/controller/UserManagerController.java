@@ -1,9 +1,9 @@
-package com.xjtushilei.imdemo.controller;
+package com.asahiluna.imdemo.controller;
 
-import com.xjtushilei.imdemo.entity.Group;
-import com.xjtushilei.imdemo.entity.Ok;
-import com.xjtushilei.imdemo.entity.User;
-import com.xjtushilei.imdemo.service.UserAndGroupService;
+import com.asahiluna.imdemo.entity.Group;
+import com.asahiluna.imdemo.entity.Ok;
+import com.asahiluna.imdemo.entity.User;
+import com.asahiluna.imdemo.service.UserAndGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

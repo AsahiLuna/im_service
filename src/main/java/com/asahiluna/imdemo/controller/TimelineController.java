@@ -1,10 +1,10 @@
-package com.xjtushilei.imdemo.controller;
+package com.asahiluna.imdemo.controller;
 
 
 import com.alicloud.openservices.tablestore.timeline.message.IMessage;
 import com.alicloud.openservices.tablestore.timeline.message.StringMessage;
-import com.xjtushilei.imdemo.entity.Ok;
-import com.xjtushilei.imdemo.service.TimelineService;
+import com.asahiluna.imdemo.entity.Ok;
+import com.asahiluna.imdemo.service.TimelineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

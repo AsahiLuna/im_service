@@ -1,4 +1,4 @@
-package com.xjtushilei.imdemo;
+package com.asahiluna.imdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

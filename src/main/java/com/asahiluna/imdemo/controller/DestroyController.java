@@ -1,7 +1,7 @@
-package com.xjtushilei.imdemo.controller;
+package com.asahiluna.imdemo.controller;
 
-import com.xjtushilei.imdemo.service.TimelineService;
-import com.xjtushilei.imdemo.service.UserAndGroupService;
+import com.asahiluna.imdemo.service.TimelineService;
+import com.asahiluna.imdemo.service.UserAndGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

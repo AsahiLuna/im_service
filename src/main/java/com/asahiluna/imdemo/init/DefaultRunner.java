@@ -1,7 +1,7 @@
-package com.xjtushilei.imdemo.init;
+package com.asahiluna.imdemo.init;
 
-import com.xjtushilei.imdemo.service.TimelineService;
-import com.xjtushilei.imdemo.service.UserAndGroupService;
+import com.asahiluna.imdemo.service.TimelineService;
+import com.asahiluna.imdemo.service.UserAndGroupService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

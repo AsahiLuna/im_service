@@ -1,4 +1,4 @@
-package com.xjtushilei.imdemo.entity;
+package com.asahiluna.imdemo.entity;
 
 public class Ok {
     String message = "ok";

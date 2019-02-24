@@ -1,4 +1,4 @@
-package com.xjtushilei.imdemo.entity;
+package com.asahiluna.imdemo.entity;
 
 import com.alicloud.openservices.tablestore.model.ColumnValue;
 import com.alicloud.openservices.tablestore.model.PrimaryKeyValue;

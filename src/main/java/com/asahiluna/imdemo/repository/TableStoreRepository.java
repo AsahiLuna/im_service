@@ -1,4 +1,4 @@
-package com.xjtushilei.imdemo.repository;
+package com.asahiluna.imdemo.repository;
 
 import com.alicloud.openservices.tablestore.SyncClient;
 import com.alicloud.openservices.tablestore.model.*;

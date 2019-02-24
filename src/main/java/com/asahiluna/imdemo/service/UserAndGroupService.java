@@ -1,14 +1,14 @@
-package com.xjtushilei.imdemo.service;
+package com.asahiluna.imdemo.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alicloud.openservices.tablestore.model.ColumnValue;
 import com.alicloud.openservices.tablestore.model.PrimaryKeySchema;
 import com.alicloud.openservices.tablestore.model.PrimaryKeyType;
 import com.alicloud.openservices.tablestore.model.PrimaryKeyValue;
-import com.xjtushilei.imdemo.entity.Group;
-import com.xjtushilei.imdemo.entity.User;
-import com.xjtushilei.imdemo.repository.PkV;
-import com.xjtushilei.imdemo.repository.TableStoreRepository;
+import com.asahiluna.imdemo.entity.Group;
+import com.asahiluna.imdemo.entity.User;
+import com.asahiluna.imdemo.repository.PkV;
+import com.asahiluna.imdemo.repository.TableStoreRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

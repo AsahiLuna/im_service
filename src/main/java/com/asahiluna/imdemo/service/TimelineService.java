@@ -1,4 +1,4 @@
-package com.xjtushilei.imdemo.service;
+package com.asahiluna.imdemo.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alicloud.openservices.tablestore.timeline.ScanParameter;
@@ -9,7 +9,7 @@ import com.alicloud.openservices.tablestore.timeline.message.IMessage;
 import com.alicloud.openservices.tablestore.timeline.message.StringMessage;
 import com.alicloud.openservices.tablestore.timeline.store.DistributeTimelineConfig;
 import com.alicloud.openservices.tablestore.timeline.store.DistributeTimelineStore;
-import com.xjtushilei.imdemo.repository.TableStoreRepository;
+import com.asahiluna.imdemo.repository.TableStoreRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

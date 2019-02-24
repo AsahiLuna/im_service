@@ -1,4 +1,4 @@
-package com.xjtushilei.imdemo.beanconfig;
+package com.asahiluna.imdemo.beanconfig;
 
 
 import org.springframework.context.annotation.Bean;
